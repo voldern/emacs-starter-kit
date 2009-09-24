@@ -6,7 +6,11 @@
 (color-theme-twilight)
 
 ;; Set default font
-(set-default-font "-*-proggyclean-*-*-*-*-13-80-96-96-*-*-iso8859-1")
+;(set-default-font
+; "-apple-andale-mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
+(set-face-font 'default
+               "-apple-andale mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
+(setq initial-frame-alist '((width . 106) (height . 64)))
 
 ;; Load php-mode
 (require 'php-mode)
