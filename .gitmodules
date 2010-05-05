@@ -1,9 +1,0 @@
-[submodule "vendor/slime"]
-	path = vendor/slime
-	url = git://git.boinkor.net/slime.git
-[submodule "vendor/swank-clojure"]
-	path = vendor/swank-clojure
-	url = git://github.com/jochu/swank-clojure.git
-[submodule "vendor/rinari"]
-	path = vendor/rinari
-	url = git://github.com/eschulte/rinari.git
