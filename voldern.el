@@ -6,14 +6,19 @@
 (color-theme-twilight)
 
 ;; Set default font
-;(set-default-font
-; "-apple-andale-mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
-(set-face-font 'default
-               "-apple-andale mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
+;;(set-default-font
+;; "-apple-andale-mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
+(set-default-font "-*-proggyclean-*-*-*-*-13-80-96-96-*-*-iso8859-1")
+;; (set-face-font 'default
+;;                "-apple-andale mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
 (setq initial-frame-alist '((width . 106) (height . 64)))
 
+;; nXhtml-mode
+(add-to-list 'load-path "~/.emacs.d/vendor/nxhtml")
+(load "~/.emacs.d/vendor/nxhtml/autostart.el")
+
 ;; Load php-mode
-(require 'php-mode)
+;; (require 'php-mode)
 (setq php-mode-force-pear 'true)
 (defun wicked/php-mode-init ()
   (setq c-basic-offset 4)
@@ -23,26 +28,6 @@
   (setq c-default-style "php"))
 (add-hook 'php-mode-hook 'wicked/php-mode-init)
 
-;; Load html-php-mode
-(load-file "~/.emacs.d/vendor/multi-mode.el")
-(load-file "~/.emacs.d/vendor/html-php.el")
-(require 'html-php)
-
-;; swank-clojure
-(add-to-list 'load-path "~/.emacs.d/vendor/swank-clojure")
-(require 'swank-clojure-autoload)
-(swank-clojure-config
- (setq swank-clojure-jar-path "~/Library/Clojure/lib/clojure.jar")
- (setq swank-clojure-extra-classpaths
-       (list "~/Library/Clojure/lib/clojure-contrib.rar")))
-
-;; slime
-(eval-after-load "slime"
-  '(progn (slime-setup '(slime-repl))))
-
-(add-to-list 'load-path "~/.emacs.d/vendor/slime")
-(require 'slime)
-(slime-setup)
 
 ;; org-mode
 (setq org-use-fast-todo-selection 'true)
@@ -55,7 +40,7 @@
                              "~/Dropbox/Org/someday.org"))
 
 ;; nxml-mode
-(require 'nxml-mode)
+;; (require 'nxml-mode)
 (defun my-nxml-mode-hook ()
   (setq tab-width 4
         indent-tabs-mode nil
