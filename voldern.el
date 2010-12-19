@@ -20,6 +20,8 @@
 
 ;; Ruby
 (add-hook 'ruby-mode-hook 'highlight-80+-mode)
+(require 'rvm)
+(rvm-use-default) ;; use rvm’s default ruby for the current Emacs session
 
 ;; Load php-mode
 ;; (require 'php-mode)
@@ -71,6 +73,8 @@
 ;; LaTeX
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
+
+
 
 ;; Function to revert all buffers. Usefull when doing external changes
 ;; to a lot of files
