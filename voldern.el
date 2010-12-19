@@ -17,10 +17,15 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/nxhtml")
 (load "~/.emacs.d/vendor/nxhtml/autostart.el")
 
+
+;; Ruby
+(add-hook 'ruby-mode-hook 'highlight-80+-mode)
+
 ;; Load php-mode
 ;; (require 'php-mode)
 (setq php-mode-force-pear 'true)
 (defun wicked/php-mode-init ()
+  (highlight-80+-mode)
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (setq fill-column 80)
@@ -61,4 +66,25 @@
 ;; Make c++ use the storstroup indent mode
 (eval-after-load 'c++-mode
   '(c-set-style 'stroustrup))
+
+
+;; LaTeX
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
+
+;; Function to revert all buffers. Usefull when doing external changes
+;; to a lot of files
+(defun revert-all-buffers ()
+  "Refreshes all open buffers from their respective files"
+  (interactive)
+  (let* ((list (buffer-list))
+         (buffer (car list)))
+    (while buffer
+      (when (and (buffer-file-name buffer) 
+                 (not (buffer-modified-p buffer)))
+        (set-buffer buffer)
+        (revert-buffer t t t))
+      (setq list (cdr list))
+      (setq buffer (car list))))
+  (message "Refreshed open files"))
 
