@@ -21,7 +21,13 @@
 ;; Ruby
 (add-hook 'ruby-mode-hook 'highlight-80+-mode)
 (require 'rvm)
-(rvm-use-default) ;; use rvm’s default ruby for the current Emacs session
+(rvm-use-default)
+(add-to-list 'load-path "~/.emacs.d/vendor/rinari")
+(require 'rinari)
+
+;; Haml
+(add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
+(add-hook 'haml-mode-hook 'rinari-minor-mode)
 
 ;; Load php-mode
 ;; (require 'php-mode)
