@@ -9,9 +9,15 @@
 ;;(set-default-font
 ;; "-apple-andale-mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
 ;;(set-default-font "-*-proggyclean-*-*-*-*-13-80-96-96-*-*-iso8859-1")
+
+;;(setq initial-frame-alist '((width . 106) (height . 64)))
+
+;; OSX specific
 (set-face-font 'default
                "-apple-andale mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
-;;(setq initial-frame-alist '((width . 106) (height . 64)))
+(setq mac-command-modifier 'meta)
+(setenv "PATH" (concat "/opt/local/bin" ":" (getenv "PATH")))
+(add-to-list 'exec-path "/opt/local/bin")
 
 ;; nXhtml-mode
 (add-to-list 'load-path "~/.emacs.d/vendor/nxhtml")
