@@ -1,5 +1,6 @@
+(add-to-list 'load-path "~/.emacs.d/vendor/")
+
 ;; Color themes
-(add-to-list 'load-path "~/.emacs.d/vendor/color-theme")
 (require 'color-theme)
 ;;(color-theme-initialize)
 (load-file "~/.emacs.d/elpa-to-submit/twilight.el")
@@ -20,7 +21,7 @@
 (add-to-list 'exec-path "/opt/local/bin")
 
 ;; nXhtml-mode
-(add-to-list 'load-path "~/.emacs.d/vendor/nxhtml")
+;;(add-to-list 'load-path "~/.emacs.d/vendor/nxhtml")
 (load "~/.emacs.d/vendor/nxhtml/autostart.el")
 
 
@@ -36,6 +37,15 @@
 
 (add-to-list 'auto-mode-alist '("\\.scss$" . sass-mode))
 (add-hook 'sass-mode-hook 'rinari-minor-mode)
+
+;; Mode-compile
+; Install mode-compile to give friendlier compiling support!
+(autoload 'mode-compile "mode-compile"
+   "Command to compile current buffer file based on the major mode" t)
+(global-set-key "\C-cc" 'mode-compile)
+(autoload 'mode-compile-kill "mode-compile"
+ "Command to kill a compilation launched by `mode-compile'" t)
+(global-set-key "\C-ck" 'mode-compile-kill)
 
 ;; Load php-mode
 ;; (require 'php-mode)
