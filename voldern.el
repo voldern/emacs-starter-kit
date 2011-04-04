@@ -14,16 +14,15 @@
 ;;(setq initial-frame-alist '((width . 106) (height . 64)))
 
 ;; OSX specific
-(set-face-font 'default
-               "-apple-andale mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
-(setq mac-command-modifier 'meta)
-(setenv "PATH" (concat "/opt/local/bin" ":" (getenv "PATH")))
-(add-to-list 'exec-path "/opt/local/bin")
+;; (set-face-font 'default
+;;                "-apple-andale mono-medium-r-normal--13-0-72-72-m-0-iso10646-1")
+;; (setq mac-command-modifier 'meta)
+;; (setenv "PATH" (concat "/opt/local/bin" ":" (getenv "PATH")))
+;; (add-to-list 'exec-path "/opt/local/bin")
 
 ;; nXhtml-mode
 ;;(add-to-list 'load-path "~/.emacs.d/vendor/nxhtml")
 (load "~/.emacs.d/vendor/nxhtml/autostart.el")
-
 
 ;; Ruby & Rails
 (add-hook 'ruby-mode-hook 'highlight-80+-mode)
@@ -31,6 +30,7 @@
 (rvm-use-default)
 (add-to-list 'load-path "~/.emacs.d/vendor/rinari")
 (require 'rinari)
+(require 'autotest)
 
 (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
 (add-hook 'haml-mode-hook 'rinari-minor-mode)
