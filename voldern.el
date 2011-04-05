@@ -31,6 +31,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/rinari")
 (require 'rinari)
 (require 'autotest)
+(setq autotest-command "autotest -s rspec2")
 
 (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
 (add-hook 'haml-mode-hook 'rinari-minor-mode)
