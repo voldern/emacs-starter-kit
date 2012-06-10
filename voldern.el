@@ -51,15 +51,31 @@
 ;; Load php-mode
 ;; (require 'php-mode)
 (setq php-mode-force-pear 'true)
-(defun wicked/php-mode-init ()
-  (highlight-80+-mode)
+(defun php-mode-init ()
+  (highlight-80+-mode -1)
+  (flyspell-mode -1)
+  ;; (flymake-mode 1)
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (setq fill-column 80)
   (setq show-paren-mode t)
-  (setq c-default-style "php"))
-(add-hook 'php-mode-hook 'wicked/php-mode-init)
+  (c-set-offset 'case-label '+)
+  (c-set-offset 'arglist-close 'c-lineup-arglist-operators)
+  (c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
+  (c-set-offset 'arglist-cont-nonempty 'c-lineup-math) ; for DBTNG fields and values
+  ;; (setq c-default-style "php")
+  )
 
+;; (setq php-mode-force-pear 'true)
+;; (defun wicked/php-mode-init ()
+;;   (highlight-80+-mode)
+;;   (setq c-basic-offset 4)
+;;   (setq indent-tabs-mode nil)
+;;   (setq fill-column 80)
+;;   (setq show-paren-mode t)
+;;   (setq c-default-style "php"))
+
+(add-hook 'php-mode-hook 'php-mode-init)
 
 ;; org-mode
 (setq org-use-fast-todo-selection 'true)
@@ -93,6 +109,7 @@
 ;; Make c++ use the storstroup indent mode
 (eval-after-load 'c++-mode
   '(c-set-style 'stroustrup))
+(setq c-basic-offset 4)
 
 
 ;; LaTeX
@@ -119,3 +136,13 @@
 (setq ispell-program-name "/opt/local/bin/aspell")
 (setenv "ASPELL_CONF" nil)
 
+;; Mumamo is making emacs 23.3 freak out:
+(when (and (equal emacs-major-version 23)
+           (equal emacs-minor-version 4))
+  (eval-after-load "bytecomp"
+    '(add-to-list 'byte-compile-not-obsolete-vars
+                  'font-lock-beginning-of-syntax-function))
+  ;; tramp-compat.el clobbers this variable!
+  (eval-after-load "tramp-compat"
+    '(add-to-list 'byte-compile-not-obsolete-vars
+                  'font-lock-beginning-of-syntax-function)))
